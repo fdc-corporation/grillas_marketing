@@ -101,3 +101,4 @@ class Proyecto(models.Model):
             print(fecha_modificada.date())  # Solo la parte de la fecha
             print(fecha_original)
             print(fields.Datetime.now().date())  # Solo la parte de la fecha
+
