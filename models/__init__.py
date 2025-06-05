@@ -5,11 +5,7 @@ from . import plataformas
 from . import responsables
 from . import proyecto
 from . import eventos
-
-
-
-
-
+from . import etapas
 
 
 

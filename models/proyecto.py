@@ -1,6 +1,9 @@
 from odoo import models, fields, api
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
+from odoo.exceptions import UserError, ValidationError
+from odoo import _
+import re
 
 
 class Proyecto(models.Model):
@@ -14,6 +17,33 @@ class Proyecto(models.Model):
     formatos = fields.Many2many("formatos.grilla_marketing", string="Formatos")
     guion = fields.Html(string="Guion")
     evento_id = fields.Many2one("calendar.event", string="Evento en calendario")
+    not_blog = fields.Boolean(
+        string="No es un blog", default=False, help="Indica si la tarea es un blog", tracking=True)
+    # blog_id = fields.Many2one(
+    #     "blog.post", string="Blog", help="Blog asociado a la tarea" )
+    contenido_blog = fields.Html(
+        string="Contenido del blog",
+        help="Contenido del blog asociado a la tarea")
+
+
+    def write (self, vals):
+        res = super(Proyecto, self).write(vals)
+        if "stage_id" in vals:
+            self.alert_state_value()
+        return res  
+
+
+    def alert_state_value (self):
+        for record in self:
+            contenido = (record.contenido_blog or '').strip()
+            contenido_texto = re.sub('<[^<]+?>', '', contenido).strip()
+            print("Contenido del blog:", contenido_texto)
+            if not record.not_blog :
+                if record.stage_id.is_etapa_blog:
+                    if not contenido_texto:
+                        raise UserError(_("Debe agregar contenido del blog para pasar a la siguiente etapa."))
+
+
 
     def create_evento_tarea(self):
         try:

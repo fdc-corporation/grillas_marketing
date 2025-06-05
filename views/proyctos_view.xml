@@ -8,10 +8,11 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='user_ids']" position="after">
                 <field name="responsable" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                <field name="evento_id" readonly="1" />
+                <field name="not_blog" />
             </xpath>
             <xpath expr="//header" position="inside">
                 <button string="Agendar en calendario" name="create_evento_tarea" type="object" class="oe_highlight"  ></button>
+                <!-- <button string="Crear blog" name="create_view_blog" type="object" class="oe_highlight" invisible="not_blog" ></button> -->
             </xpath>
             <xpath expr="//div[@id='date_deadline_and_recurring_task']" position="after">
                 <field name="marcas" widget="many2many_tags" options="{'color_field': 'color'}"/>
@@ -21,6 +22,11 @@
             <xpath expr="//notebook" position="inside">
                <page name="guion" string="Guion">
                 <field name="guion" type="html" options="{'collaborative': true, 'resizable': false}" placeholder="Agrega el guion de la tarea..."/>
+               </page>
+               <page name="blog" string="Blog" invisible="not_blog">
+                <!-- <field name="blog_id" /> -->
+                <field name="contenido_blog" type="html" options="{'collaborative': true, 'resizable': false}" placeholder="Agrega el contenido del blog..."/>
+
                </page>
             </xpath>
             <xpath expr="//field[@name='responsable']" position="attributes">
