@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='user_ids']" position="after">
-                <field name="responsable" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <!-- <field name="responsable" widget="many2many_tags" options="{'color_field': 'color'}"/> -->
                 <field name="not_blog" />
             </xpath>
             <xpath expr="//header" position="inside">
