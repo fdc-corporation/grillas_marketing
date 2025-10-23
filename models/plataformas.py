@@ -7,3 +7,9 @@ class Plataformas_social_marketing (models.Model):
     color = fields.Integer(string='Color')
 
 
+class Propositos_marketing (models.Model):
+    _name = 'propositos.grilla_marketing'
+    _description = 'Propósitos marketing'
+    
+    name = fields.Char(string='Propósito', required=True)
+    color = fields.Integer(string='Color')

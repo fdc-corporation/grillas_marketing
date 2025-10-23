@@ -10,7 +10,7 @@ class Proyecto(models.Model):
     _inherit = "project.task"
 
     responsable = fields.Many2many(
-        "responsables.grilla_marketing", string="Responsables"
+        "res.users", string="Responsables"
     )
     marcas = fields.Many2many("marcas.grilla_marketing", string="Marcas")
     plataformas = fields.Many2many("plataformas.grilla_marketing", string="Plataformas")
@@ -24,6 +24,8 @@ class Proyecto(models.Model):
     contenido_blog = fields.Html(
         string="Contenido del blog",
         help="Contenido del blog asociado a la tarea")
+    seo_palabras = fields.Html()
+    proposito = fields.Many2many("propositos.grilla_marketing", string="Propósitos")
 
 
     def write (self, vals):
