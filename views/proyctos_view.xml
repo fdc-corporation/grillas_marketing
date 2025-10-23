@@ -19,13 +19,13 @@
                 
             </xpath>
             <xpath expr="//notebook" position="inside">
-               <page name="guion" string="Guion">
+               <page name="guion" string="Guión">
                     <field name="guion" type="html" options="{'collaborative': true, 'resizable': false}" placeholder="Agrega el guion de la tarea..."/>
                </page>
                <page name="blog" string="Blog" invisible="not_blog">
                     <field name="contenido_blog" type="html" options="{'collaborative': true, 'resizable': false}" placeholder="Agrega el contenido del blog..."/>
                </page>
-               <page string="Palabreas clave">
+               <page string="Palabras clave">
                     <field name="seo_palabras" type="html" options="{'collaborative': true, 'resizable': false}" placeholder="Agrega las palabras clave SEO..."/>
                 
                </page>
