@@ -26,7 +26,10 @@ class Proyecto(models.Model):
         help="Contenido del blog asociado a la tarea")
     seo_palabras = fields.Html()
     proposito = fields.Many2many("propositos.grilla_marketing", string="Propósitos")
-
+    state = fields.Selection(
+        selection_add=[('en_revision', 'En Revisión')],
+        ondelete={'en_revision': 'set default'}
+    )   
 
     def write (self, vals):
         res = super(Proyecto, self).write(vals)

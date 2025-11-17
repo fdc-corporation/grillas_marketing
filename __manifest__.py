@@ -21,7 +21,7 @@
     'version': '1.2',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'project', "calendar"],
+    'depends': ['base', 'web', 'project', "calendar"],
 
     # always loaded
     'data': [
@@ -35,6 +35,12 @@
         'views/etapa_form.xml',
         'views/code/ir.cronp.xml'
     ],
+    'assets' : {
+        'web.assets_backend': [
+            '/grillas_marketing/static/src/js/project_task_state_patch.js',
+            # '/grillas_marketing/static/src/js/project_task_state_selection_extend.js',
+        ],
+    },
 }
 
 
