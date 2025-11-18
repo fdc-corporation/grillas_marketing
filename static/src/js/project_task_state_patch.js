@@ -27,9 +27,9 @@ patch(ProjectTaskStateSelection.prototype, {
         if (currentState !== "04_waiting_normal") {
             states.unshift(
                 "01_in_progress",
+                "en_revision",
                 "02_changes_requested",
-                "03_approved",
-                "en_revision"
+                "03_approved"
             );
         }
 
